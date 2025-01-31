@@ -1,0 +1,295 @@
+/* Body styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #9ACBD0; /* Colorful gradient */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-size: 400% 400%;
+  animation: gradient-animation 15s ease infinite; /* Animate the gradient */
+}
+
+/* Animation for the gradient */
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* App container styles */
+.App {
+  width: 100%;
+  max-width: 800px; /* You can adjust this value */
+  padding: 20px;
+  background-color: #EAE2C6;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Separate Search Bar Section */
+.search-bar {
+  width: 100%;
+  max-width: 800px; /* Ensure the search bar does not expand */
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+/* Search input box */
+.search-bar input {
+  padding: 10px;
+  width: 70%;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Search button */
+.search-bar button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background-color: #0056b3;
+}
+
+/* Song results section */
+.song-results {
+  width: 100%;
+  max-width: 800px;  /* Fixed width for the song results */
+  height: auto;
+  margin-top: 10px;
+  overflow-y: auto;   /* Enable scrolling if there are too many results */
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Individual song list item styles */
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  padding: 10px;
+  background-color: #727D73;;
+  border-radius: 35px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+li:hover {
+  background-color: #e0e0e0;
+}
+
+/* Styling for the play/pause button */
+button {
+  background-color: #28a745;
+  color: white;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  border-radius: 100px;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+/* Adjust the video player container */
+.react-player {
+  display: none;
+}
+h1 {
+  color: #007bff; /* Change to your preferred color */
+  font-size: 2.5em;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase; /* Optional: makes the title uppercase */
+  margin-bottom: 20px;
+}
+/* Style the input element for the search bar */
+input {
+  padding: 10px;
+  border-radius: 35px;  /* Apply 35px border-radius to input */
+  border: 2px solid #007bff;
+  width: 300px;  /* Set a fixed width for consistency */
+  box-sizing: border-box;  /* Ensures padding does not affect the width */
+}
+
+/* Style the search button */
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 35px;  /* Apply 35px border-radius to button */
+}
+
+/* Style the search button on hover */
+button:hover {
+  background-color: #0056b3;
+}
+/* Container for the entire app */
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center all elements horizontally */
+  height: 100vh; /* Full viewport height */
+  text-align: center; /* Ensure all text inside is centered */
+  padding: 20px;
+  background-color: #EAE2C6; /* Optional: You can change the background color */
+}
+
+/* Style the input element for the search bar */
+input {
+  padding: 10px;
+  border-radius: 35px;
+  border: 2px solid #007bff;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+/* Style the search button */
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 35px;
+  margin-left: 10px; /* To give space between input and button */
+}
+
+/* Style the search button on hover */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Center the video list */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px; /* Add some space between the search bar and results */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Align items in the center horizontally */
+  justify-content: center; /* Center the items vertically within the list */
+  width: 100%;
+}
+
+/* Style each song result */
+li {
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: center; /* Center the title text */
+  width: 100%;
+  max-width: 400px; /* Set a maximum width for better readability */
+}
+
+li:hover {
+  text-decoration: underline;
+}
+
+/* Optional: Loading and error message styles */
+p {
+  margin: 10px;
+}
+/* Container for the entire app */
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top */
+  align-items: center; /* Center content horizontally */
+  padding: 20px;
+  background-color: #EAE2C6; /* Optional: You can change the background color */
+  min-height: 100vh; /* Full viewport height */
+}
+
+/* Style for the title - Keep it at the top inside the app */
+h1 {
+  font-size: 2rem;
+  color: #007bff;
+  margin-top: 0;
+  margin-bottom: 20px; /* Space below the title */
+}
+
+/* Style for the search bar and button */
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center form content horizontally */
+  margin-bottom: 30px; /* Space below the search bar */
+}
+
+/* Style the input element for the search bar */
+input {
+  padding: 10px;
+  border-radius: 35px;
+  border: 2px solid #007bff;
+  width: 300px;
+  box-sizing: border-box;
+}
+
+/* Style the search button */
+button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 35px;
+  margin-left: 10px; /* Space between input and button */
+}
+
+/* Style the search button on hover */
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Center the video list */
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 20px; /* Add some space from the search bar */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the list items */
+  width: 100%;
+}
+
+/* Style each song result */
+li {
+  margin: 10px 0;
+  cursor: pointer;
+  text-align: center; /* Center the title text */
+  width: 100%;
+  max-width: 400px; /* Set a maximum width for better readability */
+}
+
+li:hover {
+  text-decoration: underline;
+}
+
+/* Optional: Loading and error message styles */
+p {
+  margin: 10px;
+}
