@@ -1,22 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import ReactPlayer from "react-player";
-import './App.css';
-
+import { FaHome, FaMusic, FaUser, FaList, FaSignOutAlt } from "react-icons/fa";
+import "./App.css";
 
 function App() {
   const [videos, setVideos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [error, setError] = useState("");
-  const [currentVideoId, setCurrentVideoId] = useState(null); // Track the current video playing
-  const [playing, setPlaying] = useState(false); // Track if the audio is playing
+  const [currentVideoId, setCurrentVideoId] = useState(null);
+  const [playing, setPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  // Function to fetch videos
+  // Fetch videos
   const searchVideos = async (query) => {
     setIsLoading(true);
     setError("");
-
     try {
       const response = await axios.get(
         `https://v1.nocodeapi.com/jeetbiswas12/yt/SrONwjHigQhTSvJn/search?q=${query} music&type=video`
@@ -36,82 +35,95 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (query) {
+    if (query.trim()) {
       searchVideos(query);
     }
   };
 
   const handlePlayPause = (videoId) => {
     if (currentVideoId === videoId) {
-      setPlaying(!playing); // Toggle play/pause for the current video
+      setPlaying(!playing);
     } else {
-      setCurrentVideoId(videoId); // Change the current video
-      setPlaying(true); // Start playing the new video
+      setCurrentVideoId(videoId);
+      setPlaying(true);
     }
   };
 
-  useEffect(() => {
-    // Stop playing audio when videos list is empty or if no video is selected
-    if (videos.length === 0) {
-      setCurrentVideoId(null);
-      setPlaying(false);
-    }
-  }, [videos]);
-
   return (
-    <div className="App">
-      <h1> Jeet Music Player</h1>
+    <div className="app-container">
+      {/* Sidebar */}
+      <nav className="sidebar">
+        <h2 className="logo">🎵 Jeet Music</h2>
+        <ul>
+          <li className="active"><FaHome className="icon" /> Home</li>
+          <li><FaMusic className="icon" /> Categories</li>
+          <li><FaUser className="icon" /> Artists</li>
+          <li><FaList className="icon" /> Playlists</li>
+          <li className="logout"><FaSignOutAlt className="icon" /> Logout</li>
+        </ul>
+      </nav>
 
-      {/* Search form */}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search for music"
-        />
-        <button type="submit">Search</button>
-      </form>
+      {/* Main Content */}
+      <div className="main">
+        {/* Search Bar */}
+        <form className="search-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search for music in jeet music ..."
+            className="search-input"
+          />
+          <button type="submit" className="search-button">Search</button>
+        </form>
 
-      {/* Loading state */}
-      {isLoading && <p>Loading...</p>}
+        {/* Loading & Error */}
+        {isLoading && <p>Loading...</p>}
+        {error && <p className="error">{error}</p>}
 
-      {/* Error state */}
-      {error && <p>{error}</p>}
+        {/* Display Video List */}
+        <div className="video-list">
+          {videos.map((video, index) => (
+            <div key={index} className="video-item">
+              {/* Song Thumbnail */}
+              <img 
+                src={video.snippet.thumbnails.medium.url} 
+                alt={video.snippet.title} 
+                className="video-thumbnail"
+              />
 
-      {/* Display video list */}
-      <ul>
-        {videos.map((video, index) => (
-          <li key={index}>
-            <p>{video.snippet.title}</p>
+              {/* Song Title */}
+              <p className="video-title">{video.snippet.title}</p>
 
-            {/* ReactPlayer to handle audio playback only */}
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
-              playing={currentVideoId === video.id.videoId && playing} // Only play if this is the selected video
-              controls={true}  // Show the controls
-              width="0px"      // Hide the video display
-              height="0px"     // Hide the video display
-              config={{
-                youtube: {
-                  playerVars: {
-                    modestbranding: 1, // Disable YouTube branding
-                    rel: 0,            // Disable related videos
-                    showinfo: 0,       // Disable video information
-                    fs: 0,             // Disable fullscreen button
-                    autoplay: 0,       // Do not autoplay initially
-                    controls: 0,       // Hide the video controls
-                  },
-                },
-              }}
-            />
-            {/* Play/Pause Button */}
-            <button onClick={() => handlePlayPause(video.id.videoId)}>
-              {currentVideoId === video.id.videoId && playing ? "Pause" : "Play"}
-            </button>
-          </li>
-        ))}
-      </ul>
+              {/* ReactPlayer for audio playback */}
+              <ReactPlayer
+                url={`https://www.youtube.com/watch?v=${video.id.videoId}`}
+                playing={currentVideoId === video.id.videoId && playing}
+                controls
+                width="0px"
+                height="0px"
+              />
+
+              {/* Play/Pause Button */}
+              <button
+                className="play-button"
+                onClick={() => handlePlayPause(video.id.videoId)}
+              >
+                {currentVideoId === video.id.videoId && playing ? "Pause" : "Play"}
+              </button>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer Menu for Small Screens */}
+      <div className="footer-menu">
+      <button><FaHome className="icon" /> Home</button>
+      <button><FaMusic className="icon" /> Categories</button>
+      <button><FaUser className="icon" /> Artists</button>
+      <button><FaList className="icon" /> Playlists</button>
+
+      </div>
     </div>
   );
 }

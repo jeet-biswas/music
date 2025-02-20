@@ -1,3 +1,467 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main container */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: #121212;
+  color: white;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #1e1e1e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: 0.3s ease-in-out;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul .active {
+  background: #333;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.logout {
+  margin-top: auto;
+  color: red;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Search bar */
+.search-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-input {
+  width: 60%;
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background: #1db954;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.search-button:hover {
+  background: #17a34a;
+}
+
+/* Video list */
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.video-item {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-item:hover {
+  transform: scale(1.05);
+}
+
+/* Video Thumbnail */
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  max-width: 180px; /* Adjusted for better fit */
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Play Button */
+.play-button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #1db954;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.play-button:hover {
+  background: #17a34a;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 80%;
+  }
+
+  .video-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .video-list {
+    grid-template-columns: 1fr;
+  }
+
+  .video-thumbnail {
+    max-width: 140px;
+  }
+}
+/* Footer Menu - Visible only on Small Screens */
+.footer-menu {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.footer-menu .icon {
+  margin-right: 5px;
+}
+
+/* Show footer on small screens */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .footer-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+/* Footer Menu - Initially Hidden */
+.footer-menu {
+  display: none;  /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Menu Links */
+.footer-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.footer-menu .icon {
+  margin-right: 5px;
+}
+
+/* Show footer only on small screens */
+@media (max-width: 768px) {
+  .footer-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+/* Hide footer on larger screens */
+@media (min-width: 769px) {
+  .footer-menu {
+    display: none !important;
+  }
+}
+/* Search Bar */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Ensure items stay in one row */
+  gap: 10px;
+  width: 100%;
+}
+
+/* Search Input */
+.search-input {
+  flex: 1;
+  min-width: 0; /* Prevents overflow issues */
+  max-width: 712px; /* Limits size */
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Search Button */
+.search-button {
+  padding: 10px 15px;
+  background: #1db954;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  white-space: nowrap; /* Prevents button text from breaking */
+}
+
+/* Make sure the search form stays in one line on small screens */
+@media (max-width: 480px) {
+  .search-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* Forces input and button in one row */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .search-input {
+    width: 70%; /* Adjusts width for smaller screens */
+  }
+
+  .search-button {
+    width: auto;
+    padding: 10px 12px;
+  }
+}
+/* Ensure Logo is Always Visible */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  white-space: nowrap; /* Prevents text wrapping */
+  display: block; /* Ensures it appears */
+  transition: font-size 0.3s ease-in-out;
+}
+
+/* Fix for Small Screens */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%; /* Adjust sidebar width for small screens */
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 20px; /* Adjust size for small screens */
+    display: block !important; /* Force display */
+    visibility: visible !important; /* Ensure it's not hidden */
+    color: white !important; /* Ensures it's visible */
+    padding: 10px 0;
+  }
+}
+.footer-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #222;
+  padding: 10px 0;
+}
+
+.footer-menu button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  padding: 8px;
+  flex-grow: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.footer-menu button:hover {
+  color: #ffcc00;
+}
+@media (max-width: 768px) {
+  .footer-menu {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer-menu button {
+    font-size: 12px; /* Adjust font size for smaller screens */
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-menu {
+    flex-direction: column;
+    padding: 5px 0;
+  }
+
+  .footer-menu button {
+    width: 100%;
+  }
+}
+.footer-menu {
+  display: flex;
+  justify-content: space-around; /* Ensures equal spacing */
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  padding: 10px 0;
+  flex-wrap: nowrap; /* Prevents wrapping to a new line */
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  white-space: nowrap;
+}
+
+.footer-menu button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  padding: 8px;
+  flex-grow: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-width: 70px; /* Ensures buttons stay aligned */
+}
+
+.footer-menu button:hover {
+  color: #ffcc00;
+}
+
+/* Ensure it remains horizontal on small screens */
+@media (max-width: 480px) {
+  .footer-menu {
+    flex-direction: row !important; /* Forces horizontal layout */
+  }
+}
+
 /* Body styles */
 body {
   font-family: Arial, sans-serif;
@@ -134,10 +598,401 @@ input {
 }
 
 /* Style the search button */
-button {
-  padding: 10px;
-  background-color: #007bff;
+
+
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Main container */
+.app-container {
+  display: flex;
+  height: 100vh;
+  background: #121212;
   color: white;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  background: #1e1e1e;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  transition: 0.3s ease-in-out;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  padding: 12px 15px;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  border-radius: 5px;
+}
+
+.sidebar ul li:hover,
+.sidebar ul .active {
+  background: #333;
+}
+
+.icon {
+  margin-right: 10px;
+}
+
+.logout {
+  margin-top: auto;
+  color: red;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 32px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Search bar */
+.search-form {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.search-input {
+  width: 60%;
+
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background: #1db954;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+}
+
+.search-button:hover {
+  background: #17a34a;
+}
+
+/* Video list */
+.video-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.video-item {
+  background: #222;
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.video-item:hover {
+  transform: scale(1.05);
+}
+
+/* Video Thumbnail */
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  max-width: 180px; /* Adjusted for better fit */
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Play Button */
+.play-button {
+  margin-top: 10px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background: #1db954;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.play-button:hover {
+  background: #17a34a;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+
+  .main {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .search-input {
+    width: 80%;
+  }
+
+  .video-list {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .search-form {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .search-button {
+    width: 100%;
+  }
+
+  .video-list {
+    grid-template-columns: 1fr;
+  }
+
+  .video-thumbnail {
+    max-width: 140px;
+  }
+}
+/* Footer Menu - Visible only on Small Screens */
+.footer-menu {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.footer-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.footer-menu .icon {
+  margin-right: 5px;
+}
+
+/* Show footer on small screens */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+  .footer-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+/* Footer Menu - Initially Hidden */
+.footer-menu {
+  display: none;  /* Hidden by default */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #333;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Footer Menu Links */
+.footer-menu a {
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  margin: 0 10px;
+  font-size: 18px;
+  display: inline-block;
+}
+
+.footer-menu .icon {
+  margin-right: 5px;
+}
+
+/* Show footer only on small screens */
+@media (max-width: 768px) {
+  .footer-menu {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+/* Hide footer on larger screens */
+@media (min-width: 769px) {
+  .footer-menu {
+    display: none !important;
+  }
+}
+/* Search Bar */
+.search-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap; /* Ensure items stay in one row */
+  gap: 10px;
+  width: 100%;
+}
+
+/* Search Input */
+.search-input {
+  flex: 1;
+  min-width: 0; /* Prevents overflow issues */
+  max-width: 712px; /* Limits size */
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+/* Search Button */
+.search-button {
+  padding: 10px 15px;
+  background: #1db954;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s ease;
+  white-space: nowrap; /* Prevents button text from breaking */
+}
+
+/* Make sure the search form stays in one line on small screens */
+@media (max-width: 480px) {
+  .search-form {
+    width: 100%;
+    display: flex;
+    flex-direction: row; /* Forces input and button in one row */
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+  }
+
+  .search-input {
+    width: 70%; /* Adjusts width for smaller screens */
+  }
+
+  .search-button {
+    width: auto;
+    padding: 10px 12px;
+  }
+}
+/* Ensure Logo is Always Visible */
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  white-space: nowrap; /* Prevents text wrapping */
+  display: block; /* Ensures it appears */
+  transition: font-size 0.3s ease-in-out;
+}
+
+/* Fix for Small Screens */
+@media (max-width: 600px) {
+  .sidebar {
+    width: 100%; /* Adjust sidebar width for small screens */
+    text-align: center;
+  }
+
+  .logo {
+    font-size: 20px; /* Adjust size for small screens */
+    display: block !important; /* Force display */
+    visibility: visible !important; /* Ensure it's not hidden */
+    color: white !important; /* Ensures it's visible */
+    padding: 10px 0;
+  }
+}
+.footer-menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #222;
+  padding: 10px 0;
+}
+
+.footer-menu button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  padding: 8px;
+  flex-grow: 1;
+  background: none;
   border: none;
   cursor: pointer;
   border-radius: 35px;  /* Apply 35px border-radius to button */
@@ -197,16 +1052,80 @@ ul {
 }
 
 /* Style each song result */
-li {
+li{
   margin: 10px 0;
   cursor: pointer;
   text-align: center; /* Center the title text */
   width: 100%;
   max-width: 400px; /* Set a maximum width for better readability */
 }
+.footer-menu button:hover {
+  color: #ffcc00;
+}
+@media (max-width: 768px) {
+  .footer-menu {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 
-li:hover {
-  text-decoration: underline;
+  .footer-menu button {
+    font-size: 12px; /* Adjust font size for smaller screens */
+    padding: 5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-menu {
+    flex-direction: column;
+    padding: 5px 0;
+  }
+
+  .footer-menu button {
+    width: 100%;
+  }
+}
+.footer-menu {
+  display: flex;
+  justify-content: space-around; /* Ensures equal spacing */
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: #222;
+  padding: 10px 0;
+  flex-wrap: nowrap; /* Prevents wrapping to a new line */
+  overflow-x: auto; /* Allows horizontal scrolling if needed */
+  white-space: nowrap;
+}
+
+.footer-menu button {
+  all: unset;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 14px;
+  color: white;
+  padding: 8px;
+  flex-grow: 1;
+  background: none;
+  border: none;
+  cursor: pointer;
+  min-width: 70px; /* Ensures buttons stay aligned */
+
+}
+
+.footer-menu button:hover {
+  color: #ffcc00;
+}
+
+/* Ensure it remains horizontal on small screens */
+@media (max-width: 480px) {
+  .footer-menu {
+    flex-direction: row !important; /* Forces horizontal layout */
+  }
 }
 
 /* Optional: Loading and error message styles */
@@ -292,4 +1211,9 @@ li:hover {
 /* Optional: Loading and error message styles */
 p {
   margin: 10px;
+}
+@media(max-width: 1024px){
+  .main{
+    padding: 78px;
+  }
 }
